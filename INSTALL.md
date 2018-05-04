@@ -3,8 +3,7 @@ Create Partitions and Filesystems
 ---------------------------------
 
 ```
-fdisk # GPT uses last 33 blocks on the disk, so we need to leave them free
-gdisk
+fdisk # create GPT partition table
 mkfs.vfat -n boot /dev/sda1
 mkfs.ext4 -L nixos /dev/sda2
 ```
@@ -22,11 +21,19 @@ Copy Configs
 ------------
 
 ```
-mkdir /mnt/home/user
-git clone https://github.com/jorpic/os-config /mnt
+cd /mnt
+git init
+git remote add origin https://github.com/jorpic/os-config
+git pull origin master
+
+# Allow everyone to `git commit` without `sudo`
+chmod -R o+rw /.git
 ```
 
+Install and Reboot
+------------------
+
 ```
-chown -R user\: /home/user
-chmod -R o+rw /.git
+nixos-install
+reboot
 ```
