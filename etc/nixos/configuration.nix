@@ -36,9 +36,11 @@
   # Set your time zone.
   time.timeZone = "Europe/Moscow";
 
-  # List packages installed in system profile. To search by name, run:
+  nixpkgs.config.allowUnfree = true; # Chrome
   environment.systemPackages = with pkgs; [
     wget vim git
+    i3 termite xorg.xbacklight escrotum
+    google-chrome
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -64,16 +66,19 @@
   # services.printing.enable = true;
 
   # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-  # services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
+  services.xserver.enable = true;
+  services.xserver.layout = "us,ru";
+  services.xserver.xkbOptions = "eurosign:e";
+  services.xserver.libinput.enable = true;
 
-  # Enable touchpad support.
-  # services.xserver.libinput.enable = true;
+  services.xserver.windowManager.i3.enable = true;
+  services.xserver.desktopManager.xterm.enable = false;
+
+
 
   users.mutableUsers = false;
   users.users.user = {

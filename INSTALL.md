@@ -27,7 +27,7 @@ git remote add origin https://github.com/jorpic/os-config
 git pull origin master
 
 # Allow everyone to `git commit` without `sudo`
-chmod -R o+rw /.git
+chmod -R o+rw /mnt/.git
 ```
 
 Install and Reboot
