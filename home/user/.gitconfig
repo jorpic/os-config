@@ -1,3 +1,21 @@
 [user]
-	email = jorpic@gmail.com
-	name = Max Taldykin
+  email = jorpic@gmail.com
+  name = Max Taldykin
+[alias]
+  co = checkout
+  ci = commit
+  st = status
+  br = branch
+  ps = push
+  pl = pull
+[push]
+  default = simple
+[color]
+  branch = auto
+  diff = auto
+  grep = auto
+  status = auto
+[init]
+  templatedir = ~/.git-template
+[commit]
+	gpgsign = false

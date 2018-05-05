@@ -1,0 +1,15 @@
+#!/bin/bash
+
+exit 0
+
+DIR=`pwd`
+while [[ ! -d '.git' ]] ; do
+  cd ..
+done
+
+MSG=$(git log -1 --pretty="format:$(basename `pwd`): %ai %s")
+cd ~/commits
+echo $MSG >> commits
+mplayer -vo png -frames 1 tv:// > /dev/null 2>&1
+montage -label "$MSG" -geometry 100% 00000001.png `date +%s`.png
+cd "$DIR"
